@@ -1,0 +1,9 @@
+# setup for brainrot vim
+
+for_window [class="(?i)vlc" title="brain3 - VLC media player"]  move down
+for_window [class="(?i)vlc" title="brain1 - VLC media player"]  move left
+for_window [class="(?i)vlc" title="brain2 - VLC media player"]  move right, move right
+for_window [title="__genvim__"] focus, move position center
+no_focus [class="(?i)vlc" title="brain2 - VLC media player"]
+
+# for_window [title="__genvim__"] move up
