@@ -16,7 +16,7 @@ And that idea lives within you.
 1. Untar the newest release in your **AFS**:
 
 ```sh
-tar xvf gen_vim-newgenvim.tar.gz
+tar xvf gen_vim-gv.tar.gz
 ```
 
 2. Move into the project directory:
