@@ -61,7 +61,7 @@ It forces you into a clean workspace dedicated only to productivity.
 
 - No browser tabs  
 - No social media  
-- No unnecessary tools  
+- No unnecessary tools
 - (almost)
 Just you and your code.
 
