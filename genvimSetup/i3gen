@@ -1,0 +1,13 @@
+# setup for brainrot vim
+
+############
+#Brainrot
+############
+
+bindsym $mod+w workspace genvim
+no_focus [class="(?i)vlc"]
+
+for_window [class="(?i)vlc"] border pixel 0
+for_window [class="(?i)vlc"] title_format ""
+
+for_window [class="(?i)alacritty"] focus

@@ -1,0 +1,56 @@
+{
+  "type": "con",
+  "layout": "splitv",
+  "nodes": [
+    {
+      "type": "con",
+      "layout": "splith",
+      "percent": 0.7,
+      "nodes": [
+        {
+          "type": "con",
+          "percent": 0.2,
+          "swallows": [
+            { "class": "(?i)vlc" }
+          ]
+        },
+        {
+          "type": "con",
+          "percent": 0.6,
+          "swallows": [
+            { "class": "(?i)alacritty" }
+          ]
+        },
+        {
+          "type": "con",
+          "percent": 0.2,
+          "swallows": [
+            { "class": "(?i)vlc" }
+          ]
+        }
+      ]
+    },
+
+    {
+      "type": "con",
+      "layout": "splith",
+      "percent": 0.3,
+      "nodes": [
+        {
+          "type": "con",
+          "percent": 0.5,
+          "swallows": [
+            { "class": "(?i)vlc" }
+          ]
+        },
+        {
+          "type": "con",
+          "percent": 0.5,
+          "swallows": [
+            { "class": "(?i)vlc" }
+          ]
+        }
+      ]
+    }
+  ]
+}

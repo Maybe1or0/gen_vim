@@ -1,0 +1,63 @@
+#--------------------------------------------GENVIM-------------------------------------------------
+
+alias playvideo='alacritty -e vlc ~/afs/video.mp4'
+
+alias playvideo='alacritty -e vlc ~/afs/video.mp4'
+
+function vim_cmd {
+    # Workspace dédié
+    i3-msg 'workspace genvim'
+
+    # Charger le layout AVANT toute fenêtre
+    i3-msg 'append_layout ~/.config/i3/genvim-layout.json'
+
+    # Lancer les vidéos (SANS accélération HW)
+    vlc --avcodec-hw=none --vout=xcb_x11 \
+        --no-video-title-show --loop --qt-minimal-view \
+        ~/afs/brainrotvideos/brainrot1.mp4 &
+    VLC1=$!
+    sleep 0.2
+
+    vlc --avcodec-hw=none --vout=xcb_x11 \
+        --no-video-title-show --loop --qt-minimal-view \
+        ~/afs/brainrotvideos/brainrot2.mp4 &
+    VLC2=$!
+    sleep 0.2
+
+    vlc --avcodec-hw=none --vout=xcb_x11 \
+        --no-video-title-show --loop --qt-minimal-view \
+        ~/afs/brainrotvideos/brainrot3.mp4 &
+    VLC3=$!
+    sleep 0.2
+
+    vlc --avcodec-hw=none --vout=xcb_x11 \
+        --no-video-title-show --loop --qt-minimal-view \
+        ~/afs/brainrotvideos/dvd.mp4 &
+    VLC4=$!
+    sleep 0.2
+
+
+    # Lancer Vim AU MILIEU
+    alacritty -e vim "$@" &
+	VIM_PID=$!
+	
+    # Attendre la fermeture de Vim
+    wait $VIM_PID
+
+    # Tout tuer à la sortie
+    kill "$VLC1" "$VLC2" "$VLC3" "$VLC4" 2>/dev/null
+    # Optionnel : revenir au workspace précédent
+    i3-msg 'workspace back_and_forth'
+}
+
+alias genvim=vim_cmd
+
+function wait_for_vlc {
+
+	win_name=$"0"
+	while ! echo $win_name | grep -iq "brain"; do
+		last_win=$(xprop -root _NET_CLIENT_LIST | grep -o '0x[0-9a-f]\+' | tail -n 1 | cut -d':' -f2-)
+		win_name=$(xprop -id $last_win WM_NAME)
+		sleep 0.1
+	done
+}
