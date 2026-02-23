@@ -16,7 +16,7 @@ And that idea lives within you.
 1. Clone this repository into your **AFS space**:
 
 ```sh
-git clone
+git clone git@github.com:PatrickHlz/gen_vim.git
 ```
 
 2. Move into the project directory:
