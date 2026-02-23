@@ -13,16 +13,16 @@ And that idea lives within you.
 
 ## Installation
 
-1. Clone this repository into your **AFS space**:
+1. Untar the newest release in your **AFS**:
 
 ```sh
-git clone git@github.com:PatrickHlz/gen_vim.git
+tar xvf gen_vim-newgenvim.tar.gz
 ```
 
 2. Move into the project directory:
 
 ```sh
-cd
+cd gen_vim-newgenvim/genvimSetup/
 ```
 
 3. Run the setup script:
