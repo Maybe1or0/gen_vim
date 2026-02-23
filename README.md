@@ -73,3 +73,5 @@ Because discipline scales.
 Because Generation Z deserves better.
 
 What are you waiting for? Embrace the **GENVIM mindset**.
+
+by Thomas and Patrick (and Axel for the advertisment)
