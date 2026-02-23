@@ -60,9 +60,8 @@ No excuses.
 It forces you into a clean workspace dedicated only to productivity.
 
 - No browser tabs  
-- No social media  
-- No unnecessary tools
-- (almost)
+- No social media (almost)  
+- No unnecessary tools (still almost)  
 Just you and your code.
 
 ## Why GENVIM?
