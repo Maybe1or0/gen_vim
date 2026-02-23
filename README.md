@@ -62,7 +62,7 @@ It forces you into a clean workspace dedicated only to productivity.
 - No browser tabs  
 - No social media  
 - No unnecessary tools  
-(almost)
+- (almost)
 Just you and your code.
 
 ## Why GENVIM?
