@@ -45,6 +45,8 @@ A new virtual desktop named **"genvim"** will automatically be created.
 
 To switch to it, use your system bind key *(commonly the Windows key)* + `w`.
 
+You may have to relaunch one more time due to VLC issues.
+
 You are now isolated.  
 No noise.  
 No distractions.  
