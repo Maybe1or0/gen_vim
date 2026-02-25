@@ -4,7 +4,7 @@ Are you distracted in class because your classmates are too noisy?
 Do you procrastinate when you’re trying to code?  
 Or worse, do you rely on AI the moment you get stuck on a practical assignment?
 
-Introducing **GENVIM** — a radically new way to work, far more efficiently.  
+Introducing **GENVIM**, a radically new way to work, far more efficiently.  
 **+167% focus**, scientifically proven by Thomas and Patrick.
 
 This is not a program.  
