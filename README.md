@@ -22,7 +22,7 @@ tar xvf gen_vim-gv.tar.gz
 2. Move into the project directory:
 
 ```sh
-cd gen_vim-newgenvim/genvimSetup/
+cd gen_vim-gen/genvimSetup/
 ```
 
 3. Run the setup script:
