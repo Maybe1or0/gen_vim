@@ -38,18 +38,26 @@
       "nodes": [
         {
           "type": "con",
-          "percent": 0.5,
+          "percent": 0.33,
           "swallows": [
             { "class": "(?i)vlc" }
           ]
         },
         {
           "type": "con",
-          "percent": 0.5,
+          "percent": 0.33,
+          "swallows": [
+            { "class": "(?i)vlc" }
+          ]
+        },
+		{
+          "type": "con",
+          "percent": 0.33,
           "swallows": [
             { "class": "(?i)vlc" }
           ]
         }
+
       ]
     }
   ]

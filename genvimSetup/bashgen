@@ -5,13 +5,10 @@ alias playvideo='alacritty -e vlc ~/afs/video.mp4'
 alias playvideo='alacritty -e vlc ~/afs/video.mp4'
 
 function vim_cmd {
-    # Workspace dédié
     i3-msg 'workspace genvim'
 
-    # Charger le layout AVANT toute fenêtre
     i3-msg 'append_layout ~/.config/i3/genvim-layout.json'
 
-    # Lancer les vidéos (SANS accélération HW)
     vlc --avcodec-hw=none --vout=xcb_x11 \
         --no-video-title-show --loop --qt-minimal-view \
         ~/afs/brainrotvideos/brainrot1.mp4 &
@@ -35,18 +32,18 @@ function vim_cmd {
         ~/afs/brainrotvideos/dvd.mp4 &
     VLC4=$!
     sleep 0.2
+	vlc --avcodec-hw=none --vout=xcb_x11 \
+		 --no-video-title-show --loop --qt-minimal-view \
+		 ~/afs/brainrotvideos/brainrot5.mp4 &
+	VLC5=$!
+	sleep 0.2
 
-
-    # Lancer Vim AU MILIEU
     alacritty -e vim "$@" &
 	VIM_PID=$!
 	
-    # Attendre la fermeture de Vim
     wait $VIM_PID
 
-    # Tout tuer à la sortie
-    kill "$VLC1" "$VLC2" "$VLC3" "$VLC4" 2>/dev/null
-    # Optionnel : revenir au workspace précédent
+    kill "$VLC1" "$VLC2" "$VLC3" "$VLC4" "$VLC5" 2>/dev/null
     i3-msg 'workspace back_and_forth'
 }
 
