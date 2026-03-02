@@ -16,13 +16,13 @@ And that idea lives within you.
 1. Untar the newest release in your **AFS**:
 
 ```sh
-tar xvf gen_vim-gv.tar.gz
+tar xvf gen_vim-genv.tar.gz
 ```
 
 2. Move into the project directory:
 
 ```sh
-cd gen_vim-gen/genvimSetup/
+cd gen_vim-genv/genvimSetup/
 ```
 
 3. Run the setup script:
