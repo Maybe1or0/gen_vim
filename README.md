@@ -48,6 +48,7 @@ To switch to it, use your system bind key *(commonly the Windows key)* + `w`.
 **You may have to relaunch one more time due to VLC issues.**
 
 ![Example of the default genvim configuration](genvim_example.png)
+Example of the default genvim configuration
 
 You are now isolated.  
 No noise.  
