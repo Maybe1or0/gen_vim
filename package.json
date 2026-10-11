@@ -1,0 +1,91 @@
+{
+  "name": "genvim",
+  "displayName": "GENVIM",
+  "description": "Play focus videos beside your code and add your own local playlist.",
+  "version": "1.0.0",
+  "publisher": "maybe1or0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Maybe1or0/gen_vim.git"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "video",
+    "focus",
+    "productivity",
+    "sidebar"
+  ],
+  "main": "./extension.js",
+  "files": [
+    "extension.js",
+    "media/**",
+    "genvimSetup/brainrotvideos/brainrot1.mp4",
+    "genvimSetup/brainrotvideos/brainrot3.mp4",
+    "genvimSetup/brainrotvideos/brainrot4.mp4",
+    "genvimSetup/brainrotvideos/brainrot5.mp4",
+    "README.md",
+    "LICENSE"
+  ],
+  "activationEvents": [
+    "onView:genvim.videoView",
+    "onCommand:genvim.addVideos",
+    "onCommand:genvim.clearCustomVideos"
+  ],
+  "scripts": {
+    "check": "node --check extension.js && node --check media/sidebar.js"
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "genvim.addVideos",
+        "title": "Add Videos",
+        "category": "GENVIM",
+        "icon": "$(add)"
+      },
+      {
+        "command": "genvim.clearCustomVideos",
+        "title": "Clear Custom Videos",
+        "category": "GENVIM",
+        "icon": "$(clear-all)"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "genvim",
+          "title": "GENVIM",
+          "icon": "media/genvim.svg"
+        }
+      ]
+    },
+    "views": {
+      "genvim": [
+        {
+          "type": "webview",
+          "id": "genvim.videoView",
+          "name": "Focus Player"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "genvim.addVideos",
+          "when": "view == genvim.videoView",
+          "group": "navigation@1"
+        },
+        {
+          "command": "genvim.clearCustomVideos",
+          "when": "view == genvim.videoView",
+          "group": "navigation@2"
+        }
+      ]
+    }
+  }
+}

@@ -1,88 +1,49 @@
-![Platform](https://img.shields.io/badge/platform-linux-lightgrey)
-![Tool](https://img.shields.io/badge/type-cli-blue)
-![Focus](https://img.shields.io/badge/focus-maximum-red)
-![Discipline](https://img.shields.io/badge/mindset-discipline-black)
-![Productivity](https://img.shields.io/badge/productivity-%2B167%25-brightgreen)
-![Status](https://img.shields.io/badge/status-unstoppable-success)
+# GENVIM for VS Code
 
-# GENVIM
+GENVIM is now a VS Code extension: a focus-video player that lives beside your code.
 
-Are you distracted in class because your classmates are too noisy?  
-Do you procrastinate when you’re trying to code?  
-Or worse, do you rely on AI the moment you get stuck on a practical assignment?
+Open the GENVIM icon in the Activity Bar to play one of the bundled videos, switch between videos in the playlist, or add local videos of your own. Custom videos remain on your computer; the extension only remembers their file locations.
 
-Introducing **GENVIM**, a radically new way to work, far more efficiently.  
-**+167% focus**, scientifically proven by Thomas and Patrick.
+![The original GENVIM layout](genvim_example.png)
 
-This is not a program.  
-It’s an idea.  
-And that idea lives within you.
+## Features
 
-## Installation
+- Video playback directly in the VS Code sidebar
+- Four bundled GENVIM videos
+- A persistent playlist of your own local videos
+- Multi-file import for MP4, WebM, OGG, M4V, and MOV files
+- Per-video removal without deleting the original file
+- A command to clear every custom playlist entry
 
-1. Untar the newest release in your **AFS**:
+Playback support depends on the codecs included in VS Code. H.264 MP4, WebM, and OGG are the most portable choices.
 
-```sh
-tar xvf gen_vim-genv.tar.gz
-```
+## Run from source
 
-2. Move into the project directory:
+1. Open this repository in VS Code.
+2. Press `F5` and choose **Run GENVIM Extension** if prompted.
+3. In the Extension Development Host, select the GENVIM icon in the Activity Bar.
 
-```sh
-cd gen_vim-genv/genvimSetup/
-```
+The extension has no runtime dependencies and does not require a build step.
 
-3. Run the setup script:
+## Package a VSIX
+
+Install the official VS Code extension packaging tool, then create the package:
 
 ```sh
-./setup.sh
+npx @vscode/vsce package
 ```
 
-That’s it. **GENVIM is now ready.**
+Install the resulting `.vsix` from VS Code with **Extensions: Install from VSIX...**.
 
-## Usage
+## Commands
 
-Launch `genvim` from your terminal, with or without arguments *(just like vim)*:
+- `GENVIM: Add Videos`
+- `GENVIM: Clear Custom Videos`
 
-```sh
-genvim
-```
+## Privacy
 
-A new virtual desktop named **"genvim"** will automatically be created.
+GENVIM does not upload videos or make network requests. Added video paths are stored in VS Code's extension global state. Removing a video from GENVIM never deletes the source file.
 
-To switch to it, use your system bind key *(commonly the Windows key)* + `w`.
+## License
 
-**You may have to relaunch one more time due to VLC issues.**
-
-![Example of the default genvim configuration](genvim_example.png)
-*Example of the default genvim configuration*
-
-You are now isolated.  
-No noise.  
-No distractions.  
-No excuses.
-
-## Philosophy
-
-**GENVIM** is not software.  
-**GENVIM** is discipline.  
-**GENVIM** is focus.  
-**GENVIM** is a mindset.
-
-It forces you into a clean workspace dedicated only to productivity.
-
-- No browser tabs  
-- No social media (almost)  
-- No unnecessary tools (still almost)  
-Just you and your code.
-
-## Why GENVIM?
-
-Because focus is not optional.  
-Because procrastination is a bug.  
-Because discipline scales.  
-Because Generation Z deserves better.
-
-What are you waiting for? Embrace the **GENVIM mindset**.
-
-by Thomas and Patrick (and Axel for the advertisment)
+[MIT](LICENSE)
