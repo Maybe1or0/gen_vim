@@ -29,7 +29,9 @@
     "genvimSetup/brainrotvideos/brainrot3.mp4",
     "genvimSetup/brainrotvideos/brainrot4.mp4",
     "genvimSetup/brainrotvideos/brainrot5.mp4",
+    "genvim_example.png",
     "README.md",
+    "RELEASE.md",
     "LICENSE"
   ],
   "activationEvents": [
@@ -38,7 +40,12 @@
     "onCommand:genvim.clearCustomVideos"
   ],
   "scripts": {
-    "check": "node --check extension.js && node --check media/sidebar.js"
+    "audit": "npm audit --audit-level=high",
+    "check": "node --check extension.js && node --check media/sidebar.js && node --check scripts/validate-extension.js && node --check test/run-tests.js && node --check test/suite/index.js",
+    "validate": "node scripts/validate-extension.js",
+    "test": "node test/run-tests.js",
+    "package": "vsce package",
+    "ci": "npm run check && npm run validate && npm run audit"
   },
   "contributes": {
     "commands": [
@@ -87,5 +94,9 @@
         }
       ]
     }
+  },
+  "devDependencies": {
+    "@vscode/test-electron": "3.1.0",
+    "@vscode/vsce": "4.0.0"
   }
 }

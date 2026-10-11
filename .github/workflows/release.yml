@@ -1,0 +1,85 @@
+name: Release
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*.*.*"
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Test and package
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run validation and audit
+        run: npm run ci
+
+      - name: Verify release tag matches package version
+        if: startsWith(github.ref, 'refs/tags/')
+        run: |
+          PACKAGE_VERSION=$(node -p "require('./package.json').version")
+          test "$GITHUB_REF_NAME" = "v$PACKAGE_VERSION"
+
+      - name: Run Extension Host smoke test
+        run: xvfb-run -a npm test
+
+      - name: Build versioned VSIX
+        run: |
+          PACKAGE_VERSION=$(node -p "require('./package.json').version")
+          mkdir -p dist
+          npm run package -- --out "dist/genvim-$PACKAGE_VERSION.vsix"
+
+      - name: Upload release candidate
+        uses: actions/upload-artifact@v7
+        with:
+          name: genvim-vsix
+          path: dist/*.vsix
+          if-no-files-found: error
+          retention-days: 30
+
+  publish-marketplace:
+    name: Publish to VS Code Marketplace
+    needs: build
+    if: ${{ vars.PUBLISH_ENABLED == 'true' && startsWith(github.ref, 'refs/tags/v') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Download release candidate
+        uses: actions/download-artifact@v8
+        with:
+          name: genvim-vsix
+          path: dist
+
+      - name: Publish with Marketplace trusted publishing
+        run: npx --no-install vsce publish --packagePath dist/*.vsix --oidc
