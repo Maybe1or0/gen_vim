@@ -37,6 +37,10 @@
   "activationEvents": [
     "onView:genvim.videoView",
     "onCommand:genvim.addVideos",
+    "onCommand:genvim.selectVideo",
+    "onCommand:genvim.nextVideo",
+    "onCommand:genvim.removeCurrentVideo",
+    "onCommand:genvim.openSettings",
     "onCommand:genvim.clearCustomVideos"
   ],
   "scripts": {
@@ -56,10 +60,34 @@
         "icon": "$(add)"
       },
       {
+        "command": "genvim.selectVideo",
+        "title": "Select Video",
+        "category": "GENVIM",
+        "icon": "$(list-selection)"
+      },
+      {
+        "command": "genvim.nextVideo",
+        "title": "Play Next Video",
+        "category": "GENVIM",
+        "icon": "$(arrow-right)"
+      },
+      {
+        "command": "genvim.removeCurrentVideo",
+        "title": "Remove Current Video",
+        "category": "GENVIM",
+        "icon": "$(trash)"
+      },
+      {
         "command": "genvim.clearCustomVideos",
         "title": "Clear Custom Videos",
         "category": "GENVIM",
         "icon": "$(clear-all)"
+      },
+      {
+        "command": "genvim.openSettings",
+        "title": "Open Settings",
+        "category": "GENVIM",
+        "icon": "$(gear)"
       }
     ],
     "viewsContainers": {
@@ -83,16 +111,71 @@
     "menus": {
       "view/title": [
         {
-          "command": "genvim.addVideos",
+          "command": "genvim.selectVideo",
           "when": "view == genvim.videoView",
           "group": "navigation@1"
         },
         {
-          "command": "genvim.clearCustomVideos",
+          "command": "genvim.nextVideo",
           "when": "view == genvim.videoView",
           "group": "navigation@2"
+        },
+        {
+          "command": "genvim.addVideos",
+          "when": "view == genvim.videoView",
+          "group": "navigation@3"
+        },
+        {
+          "command": "genvim.openSettings",
+          "when": "view == genvim.videoView",
+          "group": "navigation@4"
         }
       ]
+    },
+    "configuration": {
+      "title": "GENVIM",
+      "properties": {
+        "genvim.autoplay": {
+          "type": "boolean",
+          "default": true,
+          "scope": "window",
+          "description": "Start the selected video automatically when the GENVIM view opens."
+        },
+        "genvim.muted": {
+          "type": "boolean",
+          "default": true,
+          "scope": "window",
+          "description": "Mute video playback. Keeping this enabled allows reliable autoplay."
+        },
+        "genvim.loop": {
+          "type": "boolean",
+          "default": true,
+          "scope": "window",
+          "description": "Loop the current video. When disabled, GENVIM advances to the next video."
+        },
+        "genvim.showControls": {
+          "type": "boolean",
+          "default": true,
+          "scope": "window",
+          "description": "Show the native video playback controls over the video."
+        },
+        "genvim.videoFit": {
+          "type": "string",
+          "default": "cover",
+          "scope": "window",
+          "enum": [
+            "cover",
+            "contain",
+            "fill"
+          ],
+          "enumDescriptions": [
+            "Fill the entire sidebar and crop overflow.",
+            "Show the entire video with possible empty space.",
+            "Stretch the video to the sidebar dimensions."
+          ],
+          "description": "Control how the video fills the GENVIM sidebar."
+        }
+      }
     }
   },
   "devDependencies": {

@@ -5,7 +5,14 @@ const path = require('node:path');
 
 const root = path.resolve(__dirname, '..');
 const manifest = readJson('package.json');
-const expectedCommands = ['genvim.addVideos', 'genvim.clearCustomVideos'];
+const expectedCommands = [
+  'genvim.addVideos',
+  'genvim.selectVideo',
+  'genvim.nextVideo',
+  'genvim.removeCurrentVideo',
+  'genvim.clearCustomVideos',
+  'genvim.openSettings',
+];
 const expectedVideos = [1, 3, 4, 5].map(
   (number) => `genvimSetup/brainrotvideos/brainrot${number}.mp4`,
 );
@@ -32,6 +39,14 @@ assert(focusView?.type === 'webview', 'GENVIM focus view must be a webview');
 assert(
   manifest.activationEvents.includes('onView:genvim.videoView'),
   'missing focus view activation event',
+);
+assert(
+  manifest.contributes?.configuration?.properties?.['genvim.autoplay']?.default === true,
+  'autoplay must default to enabled',
+);
+assert(
+  manifest.contributes?.configuration?.properties?.['genvim.videoFit']?.default === 'cover',
+  'video fit must default to cover',
 );
 
 for (const relativePath of [

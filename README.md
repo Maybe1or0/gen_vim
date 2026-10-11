@@ -4,17 +4,18 @@
 
 GENVIM is now a VS Code extension: a focus-video player that lives beside your code.
 
-Open the GENVIM icon in the Activity Bar to play one of the bundled videos, switch between videos in the playlist, or add local videos of your own. Custom videos remain on your computer; the extension only remembers their file locations.
+Open the GENVIM icon in the Activity Bar to play a focus video across the entire sidebar. Videos autoplay muted by default so playback can begin reliably without taking space away from your code. Custom videos remain on your computer; the extension only remembers their file locations.
 
 ![The original GENVIM layout](genvim_example.png)
 
 ## Features
 
-- Video playback directly in the VS Code sidebar
+- Full-sidebar video playback with autoplay
 - Four bundled GENVIM videos
 - A persistent playlist of your own local videos
 - Multi-file import for MP4, WebM, OGG, M4V, and MOV files
-- Per-video removal without deleting the original file
+- Command-based selection and removal without deleting the original file
+- Native VS Code settings for playback and display preferences
 - A command to clear every custom playlist entry
 
 Playback support depends on the codecs included in VS Code. H.264 MP4, WebM, and OGG are the most portable choices.
@@ -49,7 +50,21 @@ The release workflow can publish tagged versions to the VS Code Marketplace usin
 ## Commands
 
 - `GENVIM: Add Videos`
+- `GENVIM: Select Video`
+- `GENVIM: Play Next Video`
+- `GENVIM: Remove Current Video`
 - `GENVIM: Clear Custom Videos`
+- `GENVIM: Open Settings`
+
+## Settings
+
+Open **GENVIM: Open Settings** from the Command Palette or use the gear in the player title bar.
+
+- `genvim.autoplay`: start playback when the sidebar opens; enabled by default
+- `genvim.muted`: mute playback for reliable autoplay; enabled by default
+- `genvim.loop`: repeat the current video or advance when it ends
+- `genvim.showControls`: show or hide controls over the video
+- `genvim.videoFit`: fill and crop, contain, or stretch the video
 
 ## Privacy
 

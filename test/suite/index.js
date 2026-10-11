@@ -14,7 +14,15 @@ async function run() {
 
   const commands = await vscode.commands.getCommands(true);
   assert.ok(commands.includes('genvim.addVideos'), 'Add Videos command is registered');
+  assert.ok(commands.includes('genvim.selectVideo'), 'Select Video command is registered');
+  assert.ok(commands.includes('genvim.nextVideo'), 'Next Video command is registered');
+  assert.ok(commands.includes('genvim.removeCurrentVideo'), 'Remove Current Video command is registered');
   assert.ok(commands.includes('genvim.clearCustomVideos'), 'Clear Custom Videos command is registered');
+  assert.ok(commands.includes('genvim.openSettings'), 'Open Settings command is registered');
+
+  const configuration = vscode.workspace.getConfiguration('genvim');
+  assert.equal(configuration.get('autoplay'), true, 'Autoplay is enabled by default');
+  assert.equal(configuration.get('videoFit'), 'cover', 'Video fills the sidebar by default');
 
   const views = extension.packageJSON.contributes?.views?.genvim ?? [];
   assert.ok(views.some(({ id }) => id === 'genvim.videoView'), 'Focus Player view is contributed');
