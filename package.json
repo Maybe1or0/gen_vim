@@ -2,7 +2,7 @@
   "name": "genvim",
   "displayName": "GENVIM",
   "description": "Play focus videos beside your code and add your own local playlist.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "maybe1or0",
   "license": "MIT",
   "repository": {
@@ -180,6 +180,6 @@
   },
   "devDependencies": {
     "@vscode/test-electron": "3.1.0",
-    "@vscode/vsce": "4.0.0"
+    "@vscode/vsce": "4.0.1-3"
   }
 }
